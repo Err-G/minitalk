@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.c                                         :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecarvalh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 18:23:12 by ecarvalh          #+#    #+#             */
-/*   Updated: 2024/01/20 20:16:21 by ecarvalh         ###   ########.fr       */
+/*   Created: 2024/01/22 17:16:23 by ecarvalh          #+#    #+#             */
+/*   Updated: 2024/01/22 17:24:29 by ecarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
-
-void	ft_putnbr(int num)
+int	ft_atoi(char *str)
 {
-	unsigned int	n;
+	int	i;
+	int	res;
 
-	n = num;
-	if (num < 0)
-	{
-		n = -num;
-		write(1, "-", 1);
-	}
-	if (n >= 10)
-		ft_putnbr(n / 10);
-	write(1, &"0123456789"[n % 10], 1);
+	i = 0;
+	res = 0;
+	while (str[i] >= '0' && str[i] <= '9')
+		res = (res * 10) + (str[i++] - '0');
+	return (res);
 }

@@ -1,28 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecarvalh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 20:26:11 by ecarvalh          #+#    #+#             */
-/*   Updated: 2024/01/22 20:15:30 by ecarvalh         ###   ########.fr       */
+/*   Created: 2024/01/20 17:33:44 by ecarvalh          #+#    #+#             */
+/*   Updated: 2024/01/22 20:33:29 by ecarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "minitalk.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <signal.h>
+void	send(int pid, unsigned char c)
+{
+	int	i;
 
-/* lib */
-void	ft_putstr(char *str);
-void	ft_putnbr(int num);
-void	*ft_calloc(size_t nmemb, size_t size);
-int		ft_strlen(char *str);
-int		ft_atoi(char *str);
-char	*ft_strjoin(char *s1, unsigned char s2);
+	i = -1;
+	while (++i < 8)
+	{
+		if ((c >> i & 1) != 0)
+		{
+			kill(pid, SIGUSR1);
+			write(1, "1", 1);
+		}
+		else
+		{
+			kill(pid, SIGUSR2);
+			write(1, "0", 1);
+		}
+		usleep(150);
+	}
+}
 
-#endif
+int	main(int ac, char **av)
+{
+	int	pid;
+
+	if (ac < 2)
+		return (1);
+	pid = ft_atoi(av[1]);
+	send(pid, 'i');
+	send(pid, '\0');
+	return (0);
+}

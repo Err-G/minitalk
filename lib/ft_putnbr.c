@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecarvalh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 20:26:11 by ecarvalh          #+#    #+#             */
-/*   Updated: 2024/01/22 20:15:30 by ecarvalh         ###   ########.fr       */
+/*   Created: 2024/01/22 17:11:07 by ecarvalh          #+#    #+#             */
+/*   Updated: 2024/01/22 17:11:38 by ecarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "minitalk.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <signal.h>
+void	ft_putnbr(int num)
+{
+	unsigned int	n;
 
-/* lib */
-void	ft_putstr(char *str);
-void	ft_putnbr(int num);
-void	*ft_calloc(size_t nmemb, size_t size);
-int		ft_strlen(char *str);
-int		ft_atoi(char *str);
-char	*ft_strjoin(char *s1, unsigned char s2);
-
-#endif
+	n = num;
+	if (num < 0)
+	{
+		n = -num;
+		write(1, "-", 1);
+	}
+	if (n >= 10)
+		ft_putnbr(n / 10);
+	write(1, &"0123456789"[n % 10], 1);
+}

@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecarvalh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 20:26:11 by ecarvalh          #+#    #+#             */
-/*   Updated: 2024/01/22 20:15:30 by ecarvalh         ###   ########.fr       */
+/*   Created: 2024/01/22 17:11:47 by ecarvalh          #+#    #+#             */
+/*   Updated: 2024/01/22 20:23:35 by ecarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "minitalk.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <signal.h>
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*ret;
 
-/* lib */
-void	ft_putstr(char *str);
-void	ft_putnbr(int num);
-void	*ft_calloc(size_t nmemb, size_t size);
-int		ft_strlen(char *str);
-int		ft_atoi(char *str);
-char	*ft_strjoin(char *s1, unsigned char s2);
-
-#endif
+	ret = (void *)malloc(nmemb * size);
+	if (ret)
+	{
+		auto size_t i = 0;
+		while (i < nmemb * size)
+			*((unsigned char *)ret + i++) = 0;
+	}
+	return (ret);
+}

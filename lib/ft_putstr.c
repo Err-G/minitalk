@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecarvalh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 20:26:11 by ecarvalh          #+#    #+#             */
-/*   Updated: 2024/01/22 20:15:30 by ecarvalh         ###   ########.fr       */
+/*   Created: 2024/01/22 17:10:39 by ecarvalh          #+#    #+#             */
+/*   Updated: 2024/01/22 19:57:53 by ecarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "minitalk.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <signal.h>
-
-/* lib */
-void	ft_putstr(char *str);
-void	ft_putnbr(int num);
-void	*ft_calloc(size_t nmemb, size_t size);
-int		ft_strlen(char *str);
-int		ft_atoi(char *str);
-char	*ft_strjoin(char *s1, unsigned char s2);
-
-#endif
+void	ft_putstr(char *str)
+{
+	write(1, str, ft_strlen(str));
+}

@@ -6,7 +6,7 @@
 #    By: anon <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/02 12:24:32 by anon              #+#    #+#              #
-#    Updated: 2024/01/20 20:36:06 by ecarvalh         ###   ########.fr        #
+#    Updated: 2024/01/22 16:30:35 by ecarvalh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,10 @@ CFLAGS	= -Wall -Wextra -Werror -I. -g
 # sources
 
 L_DIR	= lib
-S_DIR	= s_src
-C_DIR	= c_src
 
 L_SRC	= $(wildcard $(L_DIR)/*.c)
-S_SRC	= $(wildcard $(S_DIR)/*.c)
-C_SRC	= $(wildcard $(C_DIR)/*.c)
+S_SRC	= server.c
+C_SRC	= client.c
 
 # objects
 
@@ -34,8 +32,6 @@ C_OBJ	= $(patsubst %.c,$(ODIR)/%.o,$(C_SRC))
 NAME	= client server
 
 vpath %.c $(L_DIR)
-vpath %.c $(S_DIR)
-vpath %.c $(C_DIR)
 
 all: $(NAME)
 
@@ -50,7 +46,7 @@ $(ODIR)/%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) -r objs
+	$(RM)r objs
 
 fclean: clean
 	$(RM) $(NAME)
