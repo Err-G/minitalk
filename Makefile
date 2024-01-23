@@ -6,7 +6,7 @@
 #    By: anon <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/02 12:24:32 by anon              #+#    #+#              #
-#    Updated: 2024/01/22 16:30:35 by ecarvalh         ###   ########.fr        #
+#    Updated: 2024/01/23 17:51:35 by ecarvalh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,8 +42,10 @@ server: $(S_OBJ) $(L_OBJ)
 	$(CC) $(CFLAGS) -o $@ $^
 
 $(ODIR)/%.o: %.c
-	mkdir -p $(@D)
+	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) -c $< -o $@
+
+bonus: all
 
 clean:
 	$(RM)r objs
@@ -53,4 +55,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re

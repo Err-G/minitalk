@@ -1,29 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_bitpos.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecarvalh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 20:26:11 by ecarvalh          #+#    #+#             */
-/*   Updated: 2024/01/23 17:13:05 by ecarvalh         ###   ########.fr       */
+/*   Created: 2024/01/23 15:43:25 by ecarvalh          #+#    #+#             */
+/*   Updated: 2024/01/23 15:47:07 by ecarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
-
-# include <stdlib.h>
-# include <unistd.h>
-# include <signal.h>
-
-/* lib */
-void	ft_putstr(char *str);
-void	ft_putnbr(int num);
-void	*ft_calloc(size_t nmemb, size_t size);
-int		ft_strlen(char *str);
-int		ft_atoi(char *str);
-char	*ft_strjoin(char *s1, unsigned char s2);
-int		ft_bitpos(int data, int pos);
-
-#endif
+int	ft_bitpos(int data, int pos)
+{
+	return ((data >> pos) & 1);
+}
