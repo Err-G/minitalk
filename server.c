@@ -6,7 +6,7 @@
 /*   By: ecarvalh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 20:26:50 by ecarvalh          #+#    #+#             */
-/*   Updated: 2024/04/18 17:59:20 by ecarvalh         ###   ########.fr       */
+/*   Updated: 2024/04/18 18:08:17 by ecarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	sig_handler(int signal)
 
 int	main(void)
 {
-	int					pid;
+	int	pid;
 
 	pid = getpid();
 	signal(SIGUSR1, sig_handler);
