@@ -6,7 +6,7 @@
 /*   By: ecarvalh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:33:44 by ecarvalh          #+#    #+#             */
-/*   Updated: 2024/01/23 17:53:28 by ecarvalh         ###   ########.fr       */
+/*   Updated: 2024/04/18 18:03:43 by ecarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	send(int pid, unsigned char c)
 	i = -1;
 	while (++i < 8)
 	{
-		if (ft_bitpos(c, i))
+		if ((c >> i) & 1)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
@@ -45,22 +45,13 @@ static int	usage(char *name)
 	return (1);
 }
 
-static void	signal_handler(int sig)
-{
-	if (sig == SIGUSR1)
-		write(1, "Success!\n", 9);
-	exit(0);
-}
-
 int	main(int ac, char **av)
 {
 	int	pid;
 
-	if (ac < 3)
+	if (ac != 3)
 		return (usage(av[0]));
-	signal(SIGUSR1, signal_handler);
 	pid = ft_atoi(av[1]);
 	send_string(pid, av[2]);
-	pause();
 	return (0);
 }

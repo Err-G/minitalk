@@ -6,7 +6,7 @@
 /*   By: ecarvalh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 20:26:11 by ecarvalh          #+#    #+#             */
-/*   Updated: 2024/01/23 17:13:05 by ecarvalh         ###   ########.fr       */
+/*   Updated: 2024/04/18 18:03:59 by ecarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,5 @@ void	*ft_calloc(size_t nmemb, size_t size);
 int		ft_strlen(char *str);
 int		ft_atoi(char *str);
 char	*ft_strjoin(char *s1, unsigned char s2);
-int		ft_bitpos(int data, int pos);
 
 #endif
