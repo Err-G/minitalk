@@ -6,7 +6,7 @@
 /*   By: ecarvalh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 17:33:44 by ecarvalh          #+#    #+#             */
-/*   Updated: 2024/04/18 18:03:43 by ecarvalh         ###   ########.fr       */
+/*   Updated: 2024/04/18 20:37:45 by ecarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	send(int pid, unsigned char c)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(150);
+		usleep(50);
 	}
 }
 
@@ -39,9 +39,9 @@ static void	send_string(int pid, char *str)
 
 static int	usage(char *name)
 {
-	ft_putstr("usage: ");
-	ft_putstr(name);
-	ft_putstr(" [pid] [text-to-send]\n");
+	write(1, "usage: ", 7);
+	write(1, name, ft_strlen(name));
+	write(1, " [pid] [text-to-send]\n", 22);
 	return (1);
 }
 
